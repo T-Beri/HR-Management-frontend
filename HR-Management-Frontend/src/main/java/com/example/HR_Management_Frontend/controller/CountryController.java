@@ -34,7 +34,6 @@ public class CountryController {
     @GetMapping
     public String listCountries(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "") String search,
             Model model) {
 
         Map body     = service.getCountries(page);
@@ -49,7 +48,7 @@ public class CountryController {
         model.addAttribute("countries",   countries);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages",  totalPages);
-        model.addAttribute("search",      search);   // keep search term in view
+        
 
         return "country/list";
     }
